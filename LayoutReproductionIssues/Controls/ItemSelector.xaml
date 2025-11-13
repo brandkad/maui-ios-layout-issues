@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="local"
+             x:Class="LayoutReproductionIssues.Controls.ItemSelector">
+    <ContentView.Content>
+        <VerticalStackLayout>
+            <Button
+                x:Name="AddItemButton"
+                Text="Add an item to the list!" 
+                Clicked="OnAddItemButtonClicked"
+                HorizontalOptions="Fill" />
+            <Button
+                x:Name="RemoveItemButton"
+                Text="Remove an item from the list!" 
+                Clicked="OnRemoveItemButtonClicked"
+                HorizontalOptions="Fill" />
+            <Border
+                HorizontalOptions="Fill"
+                Padding="5"
+                x:Name="MainFrame"
+                VerticalOptions="Fill">
+                <Grid
+                    BindingContext="{x:Reference local}"
+                    RowDefinitions="auto,auto">
+                    <Label
+                        Grid.Row="0"
+                        HorizontalOptions="Fill"
+                        Margin="0"
+                        Text="Select Items"
+                        VerticalOptions="Center" />
+                    <StackLayout
+                        Grid.Row="1"
+                        BindableLayout.ItemsSource="{Binding Items}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Start"
+                                        Margin="0,6,0,0">
+                                    <Label
+                                        HeightRequest="30"
+                                        Grid.Column="0"
+                                        Text="{Binding Name}">
+                                    </Label>
+                                </Border>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </Grid>
+            </Border>
+        </VerticalStackLayout>
+    </ContentView.Content>
+</ContentView>
