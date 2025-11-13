@@ -35,14 +35,29 @@
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
                                 <Border
+                                    HorizontalOptions="Fill"
+                                    VerticalOptions="Start"
+                                    Margin="0,6,0,0">
+                                    <Grid
+                                        ColumnDefinitions="*,auto"
                                         HorizontalOptions="Fill"
-                                        VerticalOptions="Start"
-                                        Margin="0,6,0,0">
-                                    <Label
-                                        HeightRequest="30"
-                                        Grid.Column="0"
-                                        Text="{Binding Name}">
-                                    </Label>
+                                        VerticalOptions="Center">
+                                        <Label
+                                            Grid.Column="0"
+                                            Text="{Binding Name}">
+                                        </Label>
+                                        <Image
+                                            Grid.Column="1"
+                                            Source="dotnet_bot.png"
+                                            HeightRequest="20"
+                                            WidthRequest="20"
+                                            Aspect="AspectFit"
+                                            SemanticProperties.Description="dot net bot in a submarine number ten">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnRemoveItemButtonClicked" CommandParameter="{Binding .}" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Grid>
                                 </Border>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
